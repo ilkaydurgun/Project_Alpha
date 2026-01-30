@@ -718,6 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   objectType: 2
   interactPrompt: {fileID: 0}
+  canInteract: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   objectType: 3
   interactPrompt: {fileID: 0}
+  canInteract: 0
 --- !u!1 &1250957084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   objectType: 4
   interactPrompt: {fileID: 0}
+  canInteract: 0
 --- !u!1 &1868665768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,11 +1379,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1868665768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d4807413d769b5418cb3d3a055944de, type: 3}
+  m_Script: {fileID: 11500000, guid: de4573ecd2462f74db9e2bc970e1a5da, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  objectType: 0
-  interactPrompt: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Key
+  gameObjectToActivate: {fileID: 0}
 --- !u!1 &1870913745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   objectType: 1
   interactPrompt: {fileID: 0}
+  canInteract: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

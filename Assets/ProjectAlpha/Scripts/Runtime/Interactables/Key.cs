@@ -3,22 +3,20 @@ using UnityEngine;
 public class Key : MonoBehaviour , IInteractable
 {    
     
-    public enum KeyType
-    {
-     Door,
-     Chest,
-       
-    }
+ 
     
-    [SerializeField] private GameObject gameObjectToActivate;
+    [SerializeField] private GameObject m_gameObjectToActivate;
     public void DoInteract()
     {
         PlayerInventory playerInventory = GameObject.FindWithTag("Player").GetComponent<PlayerInventory>();
         playerInventory.AddItem(this.gameObject);
 
         Debug.Log("Key picked up!");
-        gameObjectToActivate.SetActive(false);
+        m_gameObjectToActivate.SetActive(false);
     }
 
-    
+    public void StopInteract()
+    {
+        
+    }
 }

@@ -1,16 +1,48 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IInteractable, IActivatable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private DoorState m_currentState;
+
+    public enum DoorState
+    {
+        Open,
+        Closed,
+        Locked
+    }
+    public void DoInteract()
+    {
+       if (m_currentState == DoorState.Locked)
+        {
+            Debug.Log("The door is locked. You need a key to open it.");
+            return;
+        }
+
+        if (m_currentState == DoorState.Closed)
+        {
+            m_currentState = DoorState.Open;
+            Debug.Log("You opened the door.");
+        }
+        else if (m_currentState == DoorState.Open)
+        {
+            m_currentState = DoorState.Closed;
+            Debug.Log("You closed the door.");
+        }
+    }
+
+    public void Activate()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Deactivate()
+    {
+       
+    }
+
+    public void StopInteract()
     {
         
     }
 }
+
