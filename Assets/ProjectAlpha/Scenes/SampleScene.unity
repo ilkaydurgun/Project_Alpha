@@ -209,7 +209,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 0e81d771d6d4ccc4e84169d5dcd11ae2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -248,7 +248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   inputReader: {fileID: 188568575}
+  animator: {fileID: 188568574}
   moveSpeed: 5
+  rotationSpeed: 10
 --- !u!114 &188568579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +601,7 @@ GameObject:
   - component: {fileID: 1250957085}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
