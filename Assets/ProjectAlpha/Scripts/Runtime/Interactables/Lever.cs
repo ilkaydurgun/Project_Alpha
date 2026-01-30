@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour, IInteractable
+public class Lever : InteractableBase
 {
     [SerializeField] private List<GameObject> objectsToControl; 
     private List<IActivatable> activatables = new List<IActivatable>(); 
     private bool isDown = false; 
-
-    private void Awake()
+    
+    protected override void Start()
     {
+        base.Start();
+        
         foreach (var obj in objectsToControl)
         {
             if (obj != null && obj.TryGetComponent(out IActivatable item))
@@ -16,12 +18,13 @@ public class Lever : MonoBehaviour, IInteractable
                 activatables.Add(item);
             }
         }
+        UpdateMessage("Pull Lever [E]");
     }
-
-    public void DoInteract()
+    
+    public override void DoInteract()
     {
         isDown = !isDown;
-
+        
         foreach (var item in activatables)
         {
             if (isDown)
@@ -29,10 +32,5 @@ public class Lever : MonoBehaviour, IInteractable
             else
                 item.Deactivate();
         }
-    }
-
-    public void StopInteract()
-    {
-        
     }
 }

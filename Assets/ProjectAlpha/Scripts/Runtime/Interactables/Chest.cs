@@ -1,32 +1,63 @@
-using System.Data.Common;
 using UnityEngine;
 
-public class Chest : MonoBehaviour, IInteractable
+public class Chest : InteractableBase
 {
-
-    private bool isLocked = true;
-    public void DoInteract()
+    [Header("Chest Settings")]
+    [SerializeField] private bool m_isLocked = true;
+    [SerializeField] private ItemData m_requiredKey;
+    
+    [Header("Visuals")]
+    [SerializeField] private Animator m_animator;
+    
+    protected override void Start()
     {
-
-        if (!isLocked)
-        {
-            Debug.Log("You opened the chest and found treasure!");
-            return;
-        }
-
-        if (PlayerInventory.Instance.HasItem(this.gameObject))
-        {
-            isLocked = false;
-            Debug.Log("You used the key to unlock the chest!");
-           
-        }
-
-        Debug.Log("The chest is locked. You need a key to open it.");
+        base.Start();
         
+        if (m_isLocked)
+            UpdateMessage("Unlock Chest [E]");
+        else
+            UpdateMessage("Open Chest [E]");
     }
-
-    public void StopInteract()
+    
+    public override void DoInteract()
     {
+        if (m_isLocked)
+        {
+            if (m_requiredKey != null)
+            {
+                if (PlayerInventory.Instance.HasItem(m_requiredKey))
+                {
+                    UnlockAndOpen();
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+                UnlockAndOpen();
+            }
+        }
+        else
+        {
+            OpenChest();
+        }
+    }
+    
+    private void UnlockAndOpen()
+    {
+        m_isLocked = false;
+        OpenChest();
+    }
+    
+    private void OpenChest()
+    {
+        if (m_animator != null) 
+        {
+            m_animator.SetTrigger("Open");
+        }
         
+        TogglePrompt(false);
+        GetComponent<Collider>().enabled = false;
     }
 }
